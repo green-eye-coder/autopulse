@@ -1,12 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-const Page = () => {
-  return (
-    <div className="text-red-500 font-bold">
-      <Button>submit</Button>
-      Home Page
-    </div>
-  );
+import prisma from "@/lib/db";
+const Page = async () => {
+  const users = await prisma.user.findMany();
+  return <div className="text-red-500 font-bold">{JSON.stringify(users)}</div>;
 };
 
 export default Page;
